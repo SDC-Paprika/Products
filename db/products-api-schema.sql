@@ -4,14 +4,14 @@ CREATE TABLE IF NOT EXISTS products (
     "slogan" VARCHAR,
     "description" TEXT,
     "category" VARCHAR,
-    "default_price" DECIMAL(12, 2)
+    "default_price" VARCHAR
 );
 
 CREATE TABLE IF NOT EXISTS styles (
     "id" INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     "product_id" INTEGER REFERENCES products(id),
     "name" VARCHAR,
-    "original_price" DECIMAL(12, 2),
+    "original_price" VARCHAR,
     "sale_price" VARCHAR,
     "default" BOOLEAN
 );
