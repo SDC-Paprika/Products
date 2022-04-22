@@ -1,5 +1,15 @@
-const db = require('../../db');
+const { details } = require('../models');
 
 module.exports = {
-  get() {},
+  get(req, res) {
+    const { productId } = req.params;
+
+    details
+      .get(productId)
+      .then((details) => res.status(200).send(details))
+      .catch((err) => {
+        console.error(err.stack);
+        res.sendStatus(500);
+      });
+  },
 };
