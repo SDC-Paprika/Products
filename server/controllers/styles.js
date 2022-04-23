@@ -2,7 +2,7 @@ const { styles } = require('../models');
 
 module.exports = {
   get(req, res) {
-    const {productId} = req.params;
+    const { productId } = req.params;
 
     styles
       .get(productId)
