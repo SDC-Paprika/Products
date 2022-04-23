@@ -22,7 +22,7 @@ module.exports = {
 
     return db
       .query({ text, values })
-      .then((result) => result.rows)
+      .then(({ rows }) => rows[0])
       .catch(console.error);
   },
 };
