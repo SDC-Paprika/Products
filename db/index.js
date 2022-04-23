@@ -1,9 +1,7 @@
-const { Client } = require('pg');
+const { Pool } = require('pg');
 require('dotenv').config();
 
-const client = new Client();
-
-client.connect().then(() => console.log('Connected to PostgreSQL!'));
+const pool = new Pool();
 
 /* test: client has a valid connection */
 // client.query('SELECT $1::text as message', ['Hello, pg!'], (err, res) => {
@@ -21,4 +19,7 @@ client.connect().then(() => console.log('Connected to PostgreSQL!'));
 //   .catch(console.error)
 //   .then(() => client.end());
 
-module.exports = client;
+const dbName = process.env.PGDATABASE;
+console.log(`Connected to database ${dbName}! 🐘\n`);
+
+module.exports = pool;
