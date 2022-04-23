@@ -9,7 +9,7 @@ module.exports = {
 
     products
       .get(page, count)
-      .then((products) => res.status(200).send(products))
+      .then((results) => res.status(200).send(results))
       .catch((err) => {
         console.error(err.stack);
         res.sendStatus(500);
