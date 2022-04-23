@@ -2,7 +2,8 @@ const db = require('../../db');
 
 module.exports = {
   get(productId) {
-    const queryString = `
+    const values = [productId];
+    const text = `
       SELECT
         p.id,
         p.name,
@@ -20,7 +21,7 @@ module.exports = {
       WHERE id = $1`;
 
     return db
-      .query(queryString, [productId])
+      .query({ text, values })
       .then((result) => result.rows)
       .catch(console.error);
   },
