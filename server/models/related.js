@@ -11,7 +11,6 @@ module.exports = {
     return db
       .query({ text, values, rowMode: 'array' })
       .then(({ rows }) => {
-        console.log({ rows });
         return rows.flat();
       })
       .catch(console.error);

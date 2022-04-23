@@ -5,7 +5,6 @@ module.exports = {
     const values = [productId];
     const text = `
       SELECT
-        products.id AS product_id,
         (
           SELECT json_agg(style_agg)
           FROM (
@@ -31,13 +30,12 @@ module.exports = {
             FROM styles
             WHERE product_id = $1
           ) AS style_agg
-        ) AS results
-      FROM products
-      WHERE id = $1`;
+        ) AS results`;
 
     return db
       .query({ text, values })
-      .then((result) => result.rows)
+      .then(({ rows }) => rows[0])
+      .then(({ results }) => ({ product_id: productId, results }))
       .catch(console.error);
   },
 };
