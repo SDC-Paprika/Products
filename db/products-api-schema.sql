@@ -70,7 +70,6 @@ csv header;
 
 -- Create indexes used for Products API endpoints
 CREATE INDEX styles_product_index ON styles (product_id);
-CREATE INDEX features_product_index ON features (product_id);
 CREATE INDEX photos_style_index ON photos (style_id);
 CREATE INDEX skus_style_index ON skus (style_id);
 CREATE INDEX related_product_index ON related (current_product_id);
