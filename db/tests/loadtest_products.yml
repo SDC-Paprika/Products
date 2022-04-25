@@ -1,0 +1,23 @@
+config:
+  target: 'http://localhost:6868'
+  phases:
+    - name: Warm up
+      duration: 10
+      arrivalRate: 10
+    - name: Ramp up 1
+      duration: 5
+      arrivalRate: 10
+      rampTo: 100
+    - name: Ramp up 2
+      duration: 5
+      arrivalRate: 100
+      rampTo: 1000
+    - name: Load test
+      duration: 10
+      arrivalRate: 1000
+
+scenarios:
+  - name: 'Look up products'
+    flow:
+      - get:
+          url: '/products?page={{$randomNumber(1,10000)}}&count={{$randomNumber(5,10)}}'
